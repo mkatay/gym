@@ -11,6 +11,7 @@ export const MyCalendar=()=> {
   return (
     <div className='calendar'>
       <Calendar onChange={onChange} value={value} onClickDay={(value)=>setSelectedValue(value)   }
+      locale='hu-HU'
       tileClassName={({ date, view }) => 
       {
         if (view === 'month') {

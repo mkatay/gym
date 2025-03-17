@@ -1,0 +1,101 @@
+.home {
+    width: min(100vw, 1400px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+     height: calc(100vh - 68.5px); /* Teljes viewport magasság */
+    overflow: hidden; /* Megakadályozza a túlcsordulást */
+}
+
+.row1, .row2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    flex-grow: 1; /* Egyenlően osztja el a helyet */
+    overflow: hidden; /* Ne lógjanak ki a képek */
+}
+
+.row2 {
+    display: flex;
+    gap: 10px;
+    flex-grow: 1; /* A row2 is kitölti a rendelkezésre álló helyet */
+}
+
+.right, .middle, .left {
+    flex: 1; /* Egyenlő szélesség elosztás */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middle {
+    flex-direction: column;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* A kép arányosan méreteződik, de nem vágódik le */
+    border-radius: 15px;
+}
+
+@keyframes fadeInSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+    }
+}
+
+.motto {
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-align: center;
+    font-style: italic;
+    background: linear-gradient(45deg, rgb(0, 128, 128), rgb(255, 105, 180)); 
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 1rem;
+    border-radius: 10px;
+    max-width: 80%;
+    margin: 20px auto;
+    position: relative;
+    opacity: 0; /* Kezdetben láthatatlan */
+    animation: fadeInSlide 1s ease-out forwards, pulseGlow 2s infinite alternate ease-in-out;
+}
+
+.motto::after {
+   
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 60%;
+    height: 4px;
+    background: rgb(255, 105, 180);
+    opacity: 0.7;
+    border-radius: 2px;
+    transform: translateX(-50%);
+   
+}
+.motto::before {
+    content: open-quote;
+   font-size: 3rem;
+}
+

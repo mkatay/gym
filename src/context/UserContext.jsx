@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { account, ID } from '../appwrite/configAppwrite';
+import { account, client, ID } from '../appwrite/configAppwrite';
 import { useCallback } from 'react';
+import { Account } from 'appwrite';
 
 
 export const UserContext = createContext();
@@ -16,6 +17,7 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     const checkUser = async () => {
       try {
+        const account = new Account(client);
         const currentUser = await account.get();
         setUser(currentUser);
       } catch (error) {
@@ -27,8 +29,15 @@ export const UserProvider = ({ children }) => {
     };
   
     checkUser();
+    
   }, []);
   
+  useEffect(()=> {
+    if (!user) return
+    account.listIdentities(
+      [] // queries (optional)
+    ).then(console.log)
+  }, [account, user])
 
  const  login=async (email, password)=> {
   try {

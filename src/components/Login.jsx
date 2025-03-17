@@ -8,7 +8,7 @@ export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  console.log(msg);
+  console.log(msg,user);
   
 
   return (
