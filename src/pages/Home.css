@@ -1,101 +1,187 @@
-.home {
-    width: min(100vw, 1400px);
+.hero{
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-     height: calc(100vh - 68.5px); /* Teljes viewport magasság */
-    overflow: hidden; /* Megakadályozza a túlcsordulást */
+    width:min(1400px,100vw);
+    height: calc(100vh - 68.5px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 1fr);
+    grid-template-rows: fit-content(50%);
+    padding:10px;
 }
 
 .row1, .row2 {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
-    flex-grow: 1; /* Egyenlően osztja el a helyet */
-    overflow: hidden; /* Ne lógjanak ki a képek */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  flex-grow: 1; /* Egyenlően osztja el a helyet */
+  overflow: hidden; /* Ne lógjanak ki a képek */
 }
 
-.row2 {
+.row1{
+    margin: 1rem auto;
+    border-radius: 10px;
+    background-color: rgba(255, 105, 180, 0.4)/* rgba(0, 128, 128, 0.2)*/ ;
     display: flex;
-    gap: 10px;
-    flex-grow: 1; /* A row2 is kitölti a rendelkezésre álló helyet */
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* A kép arányosan méreteződik, de nem vágódik le */
+  border-radius: 15px;
 }
 
-.right, .middle, .left {
-    flex: 1; /* Egyenlő szélesség elosztás */
+.heroMotto{
+    color:white;
+    font-size: 3vw;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
-
-.middle {
-    flex-direction: column;
-}
-
-img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; /* A kép arányosan méreteződik, de nem vágódik le */
-    border-radius: 15px;
-}
-
-@keyframes fadeInSlide {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulseGlow {
-    0% {
-        text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
-    }
-    50% {
-        text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
-    }
-    100% {
-        text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
-    }
-}
-
-.motto {
-    font-size: 1.7rem;
-    font-weight: bold;
-    text-align: center;
-    font-style: italic;
-    background: linear-gradient(45deg, rgb(0, 128, 128), rgb(255, 105, 180)); 
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.workouts{
+    background-color: white;
     padding: 1rem;
     border-radius: 10px;
-    max-width: 80%;
-    margin: 20px auto;
+    font-size: 2vw;
+    color:rgb(45, 44, 44);
+}
+.row2{
+    display: flex;
+    gap:1rem;
+    justify-content: center;
+}
+
+/**************button*/
+
+.button22 {
+    margin-top: 10px;
+    width: 160px;
+    height: 60px;
     position: relative;
-    opacity: 0; /* Kezdetben láthatatlan */
-    animation: fadeInSlide 1s ease-out forwards, pulseGlow 2s infinite alternate ease-in-out;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    outline: none;
+    border: none;
+    background-color: #3f3e3e;
+    transition: all 0.2s ease;
 }
-
-.motto::after {
-   
+.button22:hover {
+    transform: scale(0.96);
+}
+.button22:before,
+.button22:after {
     position: absolute;
+    content: "";
+    width: 150%;
     left: 50%;
-    bottom: -5px;
-    width: 60%;
-    height: 4px;
-    background: rgb(255, 105, 180);
-    opacity: 0.7;
-    border-radius: 2px;
+    height: 100%;
     transform: translateX(-50%);
-   
+    z-index: -1000;
+    background-repeat: no-repeat;
 }
-.motto::before {
-    content: open-quote;
-   font-size: 3rem;
+.button22:hover:before {
+    top: -70%;
+    background-image: radial-gradient(circle, #0c0c0c 20%, transparent 20%),
+      radial-gradient(circle, transparent 20%, #0c0c0c 20%, transparent 30%),
+      radial-gradient(circle, #0c0c0c 20%, transparent 20%),
+      radial-gradient(circle, #0c0c0c 20%, transparent 20%),
+      radial-gradient(circle, transparent 10%, #0c0c0c 15%, transparent 20%),
+      radial-gradient(circle, #0c0c0c 20%, transparent 20%),
+      radial-gradient(circle, #0c0c0c 20%, transparent 20%),
+      radial-gradient(circle, #0c0c0c 20%, transparent 20%),
+      radial-gradient(circle, #0c0c0c 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+      10% 10%, 18% 18%;
+    background-position: 50% 120%;
+    animation: topBubbles 1s ease;
+}
+@keyframes topBubbles {
+    0% {
+      background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+        40% 90%, 55% 90%, 70% 90%;
+    }
+  
+    50% {
+      background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+        50% 50%, 65% 20%, 90% 30%;
+    }
+  
+    100% {
+      background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+        50% 40%, 65% 10%, 90% 20%;
+      background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+}
+.button22:hover::after {
+    bottom: -70%;
+    background-image: radial-gradient(circle, #0c0c0c 20%, transparent 20%),
+      radial-gradient(circle, #0c0c0c 20%, transparent 20%),
+      radial-gradient(circle, transparent 10%, #0c0c0c 15%, transparent 20%),
+      radial-gradient(circle, #0c0c0c 20%, transparent 20%),
+      radial-gradient(circle, #0c0c0c 20%, transparent 20%),
+      radial-gradient(circle, #0c0c0c 20%, transparent 20%),
+      radial-gradient(circle, #0c0c0c 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+    background-position: 50% 0%;
+    animation: bottomBubbles 1s ease;
+}
+@keyframes bottomBubbles {
+    0% {
+      background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+        70% -10%, 70% 0%;
+    }
+  
+    50% {
+      background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+        105% 0%;
+    }
+  
+    100% {
+      background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+        110% 10%;
+      background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
 }
 
+/***************/
+@media screen and (max-width:1100px){
+  .pas{
+    max-width: 180px;
+  }
+ 
+}
+@media screen and (max-width:900px) {
+  .hero{
+    
+    height: auto;
+    grid-template-rows:auto;
+  }
+  .heroMotto{
+    font-size: 2.7vw;
+  }
+
+ .pas,.petra{
+    max-width:180px;
+  }
+.button22{
+  height: 40px;
+}
+}
+@media screen and (max-width:650px){
+  .row2{
+    flex-wrap: wrap;
+  }
+  .workouts{
+    font-size: 14px;
+  }
+  .heroMotto{
+    font-size: 18px;
+  }
+
+}

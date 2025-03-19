@@ -1,34 +1,46 @@
 import React from 'react'
-import { useContext } from 'react';
-import { UserContext } from '../context/UserContext';
+import petra from '../assets/Petra-removebg-preview.png'
+import paslogo from '../assets/paslogo.png'
+import terem from '../assets/terem.jpg'
+import kettle from '../assets/kettle.jpg'
+import reggeli from '../assets/reggeli.jpg'
 import './Home.css'
+import { useNavigate } from 'react-router-dom'
 
 
 export const Home = () => {
-  const {user,logout,msg}=useContext(UserContext)
-  console.log(user,msg);
+
+  const navigate=useNavigate()
 
   return (
-    <div className='home'>
-      <div className='row1'>
-        <img src="terem.jpg" alt="terem" />
-      </div>
-      <div className='row2'>
-        <div className='right'>
-          <img src="Petra.JPG" alt="petra" />
-        </div>
-        <div className='middle'>
-          <q className='motto'>
+    <div className='hero'>
+      <div className="row1">
+        <img className="pas" src={paslogo} alt="pas" />
+        <div className='heroMotto'>
             <p>Formás alak</p>
             <p>Magabiztos én</p>
-            <p>Fogyás éhezés nélkül</p></q>
-          <div>
-            <img src="kettlebell.jpg" alt="kettle" />
-          </div>
+            <p>Fogyás éhezés nélkül</p>
+            <button className="button22" onClick={()=>navigate('/timetable')}>Gyere</button>
         </div>
-        <div className='left'>
-            <img src="fogyni.jpg" alt="fogyni" />
+        <img className="petra" src={petra} alt="petra" />
+        <div className="workouts">
+            <p>Step</p>
+            <p>TRX</p>
+            <p>Jóga</p>
+            <p>Alakformáló</p>
+            <p>Zsírégető</p>
         </div>
+      </div>
+      <div className="row2">
+            <div className='imgHolder'>
+                <img src={terem} alt="terem" />
+            </div>
+            <div className='imgHolder'>
+                <img src={kettle} alt="kettleball" />
+            </div>
+            <div className='imgHolder'>
+                <img src={reggeli} alt="reggeli" />
+            </div>
       </div>
     </div>
   )

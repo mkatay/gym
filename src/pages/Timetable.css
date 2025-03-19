@@ -1,0 +1,49 @@
+.timetable-container{
+     width:min(1400px,100vw);
+      margin:0 auto;
+}
+.timetable{   
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    padding: 1rem;
+   
+}
+[class^="day-"] {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 1rem;
+    text-align: center;
+}
+.timetable-container h2{
+    color: white;
+    padding: 1rem;
+}
+.timetable-container p{
+       
+        text-align: center;
+        padding: 20px;
+        background-color:rgba(255, 105, 180, 0.4);  
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        animation: pulse 2s infinite alternate;
+        max-width: 80%;
+        margin: auto;
+    }
+    
+    /* Kis pulzáló animáció */
+    @keyframes pulse {
+        from {
+            transform: scale(1);
+        }
+        to {
+            transform: scale(1.05);
+        }
+    }
+
+    @media screen and (max-width:800px) and (min-width:400px) {
+        .timetable{   
+            grid-template-columns: repeat(3,1fr);
+        
+        }
+     
+    }

@@ -1,0 +1,39 @@
+.dayly{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    
+}
+.dayly .workout{
+   
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+}
+.workout-1 .time, .day-1{
+    color: rgb(179, 26, 26);
+
+}
+.workout-2 .time, .day-2{
+    color: rgb(23, 158, 118);
+}
+.workout-3 .time, .day-3{
+    color: rgb(108, 220, 235);
+}
+.workout-4 .time, .day-4{
+    color: rgb(246, 67, 204);
+}
+.workout-5 .time, .day-5{
+    color: rgb(8, 223, 187);
+}
+.workout-6 .time, .day-6{
+    color: rgb(158, 3, 127);
+}
+[class^="workout-"] {
+   background-color: white;
+   background-color: 1px solid red;
+   margin: 5px;
+   text-align: center;
+   padding: 10px;
+   border-radius: 5px;
+}
